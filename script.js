@@ -4,7 +4,7 @@ import biasedNumber from "./biasedNumGenerator";
 
 export default function () {
 
-  let random = biasedNumber.biasedNumGenerator();
+  let random = biasedNumber();
   let headers = { 'Content-Type': 'application/json' };
   let data = {
     check_in: "2020-09-13T00:00:00-07:00",
@@ -18,8 +18,8 @@ export default function () {
   data = JSON.stringify(data);
 
   let responses = http.batch([
-    ['GET', `http://54.219.10.222/room?id=${random}`, { tags: { ctype: 'application/json' } }],
-    ['GET', `http://54.219.10.222/booking?id=${random}`, { tags: { ctype: 'application/json' } }],
-    ['POST', `http://54.219.10.222/booking?id=${random}`, data, { headers: headers }]
+    ['GET', `http://sdcloadbalancer-1748024864.us-west-1.elb.amazonaws.com/room?id=${random}`, { tags: { ctype: 'application/json' } }],
+    ['GET', `http://sdcloadbalancer-1748024864.us-west-1.elb.amazonaws.com/booking?id=${random}`, { tags: { ctype: 'application/json' } }],
+    ['POST', `http://sdcloadbalancer-1748024864.us-west-1.elb.amazonaws.com/booking?id=${random}`, data, { headers: headers }]
   ]);
 }

@@ -4,7 +4,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-// import $ from 'jquery';
 import axios from 'axios';
 import Date from './Date.jsx';
 import Cost from './Cost.jsx';
@@ -242,8 +241,7 @@ export default class Form extends React.Component {
       roomId,
       createdAt: moment().format(),
     };
-    value = JSON.stringify(value);
-    // console.log('test', value)
+
     axios.post(`/booking?id=${roomId}`, value)
       .then(() => {
         this.formInitialize();

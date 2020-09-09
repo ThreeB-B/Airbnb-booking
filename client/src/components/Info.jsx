@@ -11,8 +11,7 @@ const Info = (props) => {
     <div className={css.roomInfo}>
       <div className={css.firstLine}>
         <div className={css.price}>
-$
-          {price}
+          ${price}
         </div>
         {' '}
         <span className={css.per}>  per night</span>
